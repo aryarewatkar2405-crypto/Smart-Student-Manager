@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Student Manager</title>
+    <!-- Use Inter font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-brand" onclick="navigateTo('home-page')">
+                <i class="fa-solid fa-graduation-cap"></i> Smart Student Manager
+            </a>
+            <div class="nav-links">
+                <a href="#" class="nav-link active" id="nav-home" onclick="navigateTo('home-page')">Home</a>
+                <a href="#" class="nav-link" id="nav-add" onclick="navigateTo('add-page')">Add Student</a>
+                <a href="#" class="nav-link" id="nav-view" onclick="navigateTo('view-page')">View Students</a>
+            </div>
+            <button id="theme-toggle" class="btn btn-outline" title="Toggle light/dark mode">Dark Mode</button>
+        </div>
+    </nav>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <main class="main-content">
+        <!-- Home Page -->
+        <section id="home-page" class="page active">
+            <div class="hero">
+                <h1>Manage Student Records Easily</h1>
+                <p>Welcome to the Smart Student Manager dashboard. Get started below.</p>
+                <div class="hero-actions">
+                    <button class="btn btn-primary btn-large" onclick="navigateTo('add-page')">Add Student</button>
+                    <button class="btn btn-secondary btn-large" onclick="navigateTo('view-page')">View Students</button>
+                </div>
+            </div>
+
+            <div class="stats-grid" aria-label="Student summary cards">
+                <article class="stat-card" id="stat-total-students">
+                    <h3>Total Students</h3>
+                    <p>0</p>
+                </article>
+                <article class="stat-card" id="stat-average-age">
+                    <h3>Average Age</h3>
+                    <p>0</p>
+                </article>
+                <article class="stat-card" id="stat-course-count">
+                    <h3>Courses Registered</h3>
+                    <p>0</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Add Student Page -->
+        <section id="add-page" class="page">
+            <div class="page-header">
+                <h2>Add New Student</h2>
+            </div>
+            <div class="card form-card">
+                <form id="add-student-form">
+                    <div class="input-group">
+                        <label for="student-name">Name</label>
+                        <input type="text" id="student-name" placeholder="Enter student name" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="student-age">Age</label>
+                        <input type="number" id="student-age" placeholder="Enter student age" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="student-course">Course</label>
+                        <input type="text" id="student-course" placeholder="Enter course name" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Add Student</button>
+                        <button type="button" class="btn btn-outline" onclick="navigateTo('home-page')">Back to Home</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- View Students Page -->
+        <section id="view-page" class="page">
+            <div class="page-header flex-header">
+                <h2>Student Records</h2>
+                <div class="view-actions">
+                    <button class="btn btn-secondary" id="export-csv">Export CSV</button>
+                    <button class="btn btn-outline" onclick="navigateTo('home-page')">Back to Home</button>
+                </div>
+            </div>
+            <div class="search-container">
+                <input id="student-search" type="text" placeholder="Search students by name, age, or course" aria-label="Search students">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <div class="card table-card">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Course</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="students-table-body">
+                        <!-- Rows populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>Made by Arya Rewatkar | USN No. - CM24073 | Subject - DBMS</p>
+    </footer>
+
+    <!-- Firebase v10 Compat CDN Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore-compat.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
