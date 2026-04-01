@@ -1,5 +1,7 @@
 # Smart Student Manager
 
+Live demo: https://aryarewatkar2405-crypto.github.io/Smart-Student-Manager/
+
 A lightweight student management web app built with HTML, CSS, and JavaScript, backed by Firebase Firestore.
 
 ## 🌐 What this website does
